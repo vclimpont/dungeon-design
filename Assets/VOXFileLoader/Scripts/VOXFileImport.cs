@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using UnityEngine;
+using System.Text;
 
 #if UNITY_EDITOR
 
@@ -336,7 +337,9 @@ namespace Cubizer
 						{
 							byte[] palette = reader.ReadBytes(4);
 							if (palette[0] != 'R' || palette[1] != 'G' || palette[2] != 'B' || palette[3] != 'A')
+                            {
 								throw new System.Exception("Bad Token: token is not RGBA");
+                            }
 
 							voxel.palette.chunkContent = reader.ReadInt32();
 							voxel.palette.chunkNums = reader.ReadInt32();
